@@ -15,4 +15,6 @@ if [ $FIX_CORS == 1 ]; then
   sed -i 's/if (ok) enginefs.sendCORSHeaders/if (true) enginefs.sendCORSHeaders/g' server.js
 fi
 
-node server.js
+(cd https-proxy ; node proxy.js) &
+node server.js &
+wait -n
