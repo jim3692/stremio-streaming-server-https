@@ -8,13 +8,16 @@ Every 24 hours a bot checks for a new version of Stremio's streaming server. Whe
 ## Usage
 Execute the following command to build and run the docker image:
 
-`$ docker build -t stremio-streaming-server-https .`
-`$ docker run -p 11443:11443 -e FIX_UNSUPPORTED_MEDIA=1 -v ${PWD}:/root/.stremio-server --name=stremio-streaming-server stremio-streaming-server-https`
+```
+$ docker build -t stremio-streaming-server-https .
+$ docker run -p 11443:11443 -e FIX_UNSUPPORTED_MEDIA=1 -v ${PWD}:/root/.stremio-server --name=stremio-streaming-server stremio-streaming-server-https
+```
 
 This will run the **latest version** of the streaming server, map the configuration directory `.stremio-server/` to your current working directory `${PWD}` and expose it on port `11443`. A patch to fix unsupported media errors is also applied here. See below for more information about [patches](#patches).
 
 You can then configure the Streaming Server to be `https://[your local IP, but with dashes instead of dots].my.local-ip.co:11443`
-More info about local-ip.co [here](http://local-ip.co)
+
+More info about [local-ip.co](http://local-ip.co)
 
 ### Patches
 By default, all streaming server dependencies are downloaded and stored unmodified.
